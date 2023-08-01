@@ -14,6 +14,13 @@
 # Configure Using Gemfile
 # gem "pg"
 #
+
+test_and_dev: &test_and_dev
+  username: postgres
+  password: password
+  host: localhost
+  port: 5432
+
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -24,7 +31,7 @@ default: &default
 development:
   <<: *default
   database: flight_booker_development
-
+  <<: *test_and_dev
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -58,6 +65,7 @@ development:
 test:
   <<: *default
   database: flight_booker_test
+  <<: *test_and_dev
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
