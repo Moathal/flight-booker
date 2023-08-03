@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_01_130359) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_01_172743) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,12 +24,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_130359) do
   end
 
   create_table "flights", force: :cascade do |t|
-    t.string "departure_airport"
-    t.string "arrival_airport"
+    t.bigint "departure_airport_id", null: false
+    t.bigint "arrival_airport_id", null: false
     t.time "duration"
     t.date "start_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
+    t.index ["departure_airport_id"], name: "index_flights_on_departure_airport_id"
   end
 
   create_table "passengers", force: :cascade do |t|
@@ -37,6 +39,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_130359) do
     t.date "birthday"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
+    t.index ["confirmation_token"], name: "index_passengers_on_confirmation_token", unique: true
+    t.index ["email"], name: "index_passengers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_passengers_on_reset_password_token", unique: true
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -49,6 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_130359) do
     t.index ["passenger_id"], name: "index_tickets_on_passenger_id"
   end
 
+  add_foreign_key "flights", "airports", column: "arrival_airport_id"
+  add_foreign_key "flights", "airports", column: "departure_airport_id"
   add_foreign_key "tickets", "flights"
   add_foreign_key "tickets", "passengers"
 end

@@ -1,5 +1,5 @@
 class Ticket < ApplicationRecord
-  belongs_to :passangers, class_name: "passanger", foreign_key: "passanger_id"
+  belongs_to :passengers, class_name: "Passenger", foreign_key: "passenger_id"
   belongs_to :airports, class_name: "airport", foreign_key: "airport_id"
   belongs_to :flight
 end
