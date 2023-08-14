@@ -1,0 +1,20 @@
+<div style="min-height: 85% !important; width: 50%; gap: 15px !important;" class="card d-flex flex-column justify-content-space-between">
+  <%= form_with(url: {controller: "flights", action: "index"}, method: :get) do |f| %>
+    <div style="max-width: 95%">
+      <%= f.label :departure_airport_id, 'Departure Airport' %>
+      <%= f.select :departure_airport_id, @airports %>
+    </div>
+
+    <div style="max-width: 95%">
+      <%= f.label :arrival_airport_id, 'Arrival Airport' %>
+      <%= f.select :arrival_airport_id, @airports %>
+    </div>
+
+    <div style="max-width: 95%">
+      <%= f.label :date %>
+      <%= f.date_field :date %>
+    </div>
+
+    <%= f.submit 'Search' %>
+  <% end %>
+</div>

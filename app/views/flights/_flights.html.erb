@@ -1,0 +1,9 @@
+<div class="card">
+  <% if @flights %>
+    <%= @flights.each do |flight| %>
+      <%= flight %>
+    <% end %>
+    <% else %>
+    <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
+  <% end %>
+</div>

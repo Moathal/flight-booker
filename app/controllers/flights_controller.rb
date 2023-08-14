@@ -2,11 +2,8 @@ class FlightsController < ApplicationController
 
   def index
     @airports = Airport.all.map { |airport| ["#{airport.name}, #{airport.code}, #{airport.city}, #{airport.country}", airport.id]}
-    # @flights = queried_flights(search_params)
-  end
-
-  def search
-    @airport = Airport.find(search_params)
+    # parameters = search_params
+    @flights = search_params.nil? ? nil : Flight.where(search_params)
   end
 
   private
