@@ -8,64 +8,38 @@
 # db/seeds.rb
 
 # Seed data for airports
-Airport.create(name: "John F. Kennedy International Airport", country: "United States", city: "New York", code: "JFK")
-Airport.create(name: "Los Angeles International Airport", country: "United States", city: "Los Angeles", code: "LAX")
-Airport.create(name: "Heathrow Airport", country: "United Kingdom", city: "London", code: "LHR")
-Airport.create(name: "Charles de Gaulle Airport", country: "France", city: "Paris", code: "CDG")
-Airport.create(name: "Tokyo Haneda Airport", country: "Japan", city: "Tokyo", code: "HND")
-Airport.create(name: "Sydney Kingsford Smith Airport", country: "Australia", city: "Sydney", code: "SYD")
-Airport.create(name: "Dubai International Airport", country: "United Arab Emirates", city: "Dubai", code: "DXB")
-Airport.create(name: "Beijing Capital International Airport", country: "China", city: "Beijing", code: "PEK")
-
-# Seed data for flights
-flight_data = [
-  { departure_code: "JFK", arrival_code: "LAX", duration: "08:00", days_offset: 1 },
-  { departure_code: "LHR", arrival_code: "CDG", duration: "01:30", days_offset: 2 },
-  # Add more flight data here
-]
-
-flight_data.each do |data|
-  departure_airport = Airport.find_by(code: data[:departure_code])
-  arrival_airport = Airport.find_by(code: data[:arrival_code])
-
-  3.times do |i|
-    Flight.create(
-      departure_airport_id: departure_airport.id,
-      arrival_airport_id: arrival_airport.id,
-      duration: data[:duration],
-      start_time: Date.today + data[:days_offset].days + i.days
-    )
-  end
-end
 # db/seeds.rb
 
 # Seed data for airports
-Airport.create(name: "John F. Kennedy International Airport", country: "United States", city: "New York", code: "JFK")
-Airport.create(name: "Los Angeles International Airport", country: "United States", city: "Los Angeles", code: "LAX")
-Airport.create(name: "Heathrow Airport", country: "United Kingdom", city: "London", code: "LHR")
-Airport.create(name: "Charles de Gaulle Airport", country: "France", city: "Paris", code: "CDG")
-Airport.create(name: "Tokyo Haneda Airport", country: "Japan", city: "Tokyo", code: "HND")
-Airport.create(name: "Sydney Kingsford Smith Airport", country: "Australia", city: "Sydney", code: "SYD")
-Airport.create(name: "Dubai International Airport", country: "United Arab Emirates", city: "Dubai", code: "DXB")
-Airport.create(name: "Beijing Capital International Airport", country: "China", city: "Beijing", code: "PEK")
-
-# Seed data for flights
-flight_data = [
-  { departure_code: "JFK", arrival_code: "LAX", duration: "08:00", days_offset: 1 },
-  { departure_code: "LHR", arrival_code: "CDG", duration: "01:30", days_offset: 2 },
-  # Add more flight data here
+airports_data = [
+  { name: "John F. Kennedy International Airport", country: "United States", city: "New York", code: "JFK" },
+  { name: "Los Angeles International Airport", country: "United States", city: "Los Angeles", code: "LAX" },
+  { name: "Heathrow Airport", country: "United Kingdom", city: "London", code: "LHR" },
+  { name: "Charles de Gaulle Airport", country: "France", city: "Paris", code: "CDG" },
+  { name: "Tokyo Haneda Airport", country: "Japan", city: "Tokyo", code: "HND" },
+  { name: "Sydney Kingsford Smith Airport", country: "Australia", city: "Sydney", code: "SYD" },
+  { name: "Dubai International Airport", country: "United Arab Emirates", city: "Dubai", code: "DXB" },
+  { name: "Beijing Capital International Airport", country: "China", city: "Beijing", code: "PEK" }
 ]
 
-flight_data.each do |data|
-  departure_airport = Airport.find_by(code: data[:departure_code])
-  arrival_airport = Airport.find_by(code: data[:arrival_code])
+airports_data.map { |data| Airport.create!(data) }
 
-  3.times do |i|
-    Flight.create!(
-      departure_airport_id: departure_airport.id,
-      arrival_airport_id: arrival_airport.id,
-      duration: data[:duration],
-      start_time: Date.today + data[:days_offset].days + i.days
-    )
+airports = Airport.all
+
+airports.each {|airport| puts "<><><><><><><><><><><><><>><><><>#{airport.id}<><><><><><><><><><><><><><><><><><><><><><><><><><>"}
+
+# Seed data for flights
+airports.each do |departure|
+  airports.each do |arrival|
+    next if departure == arrival # Skip creating flights with same departure and arrival
+
+    3.times do |i|
+      Flight.create!(
+        departure_airport_id: departure.id,
+        arrival_airport_id: arrival.id,
+        duration: "#{rand(1..10)}:#{rand(0..59).to_s.rjust(2, '0')}",
+        start_time: Date.today + i.days
+      )
+    end
   end
 end
