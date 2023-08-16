@@ -1,9 +1,16 @@
-<div class="card">
-  <% if @flights %>
-    <%= @flights.each do |flight| %>
-      <%= flight %>
-    <% end %>
+<div style="min-height: 85% !important; width: 50%; gap: 15px !important;" class="card">
+  <ul>
+    <% if @flights %>
+      <% @flights.each do |flight| %>
+        <li>
+          <a>
+            <p><%= flight.start_time %></p>
+            <p><%= flight.duration %></p>
+          </a>
+        </li>
+        <% end %>
     <% else %>
-    <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
-  <% end %>
+      <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
+    <% end %>
+  </ul>
 </div>
