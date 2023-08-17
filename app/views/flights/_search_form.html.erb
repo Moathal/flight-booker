@@ -1,5 +1,5 @@
-<div style="min-height: 85% !important; width: 50%; gap: 15px !important;" class="card d-flex flex-column justify-content-space-between">
-  <%= form_with(url: {controller: "flights", action: "index"}, method: :get, html: {style: 'max-width: 100%;'}) do |f| %>
+<div style="min-height: 100% !important; width: 50%; gap: 15px !important;" class="card d-flex flex-column">
+  <%= form_with(url: {controller: "flights", action: "index"}, method: :get, html: {style: 'max-width: 100%; ', class: 'd-flex flex-column align-items-center gap-3 m-1'}) do |f| %>
     <div style="max-width: 95%">
       <%= f.label :departure_airport_id, 'Departure Airport' %>
       <%= f.select :departure_airport_id, @airports, {}, { style: 'max-width: 100% !important;' } %>
@@ -11,10 +11,10 @@
     </div>
 
     <div style="max-width: 95%">
-      <%= f.label :date %>
-      <%= f.date_field :date %>
+      <%= f.label :start_time, 'Date' %>
+      <%= f.date_field :start_time %>
     </div>
 
-    <%= f.submit 'Search' %>
+    <%= f.submit 'Search', style: 'width: 50%; align-self: center;' %>
   <% end %>
 </div>
