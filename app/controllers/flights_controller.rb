@@ -2,8 +2,7 @@ class FlightsController < ApplicationController
 
   def index
     @airports = Airport.all.map { |airport| ["#{airport.name}, #{airport.code}, #{airport.city}, #{airport.country}", airport.id]}
-    # parameters = search_params
-    @flights = params.nil? ? Flight.all.limit(8) : Flight.where(search_params)
+    @flights = Flight.where(search_params).limit(5)
   end
 
   private

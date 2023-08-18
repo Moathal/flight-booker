@@ -1,4 +1,4 @@
-<div style="min-height: 100% !important; width: 50%; gap: 15px !important;" class="card d-flex flex-column justify-content-center">
+<div style="min-height: 100% !important; width: 40%; gap: 15px !important;" class="card d-flex flex-column justify-content-center">
   <%= form_with(url: {controller: "flights", action: "index"}, method: :get, html: {style: 'max-width: 100%; ', class: 'd-flex flex-column align-items-start gap-3 m-1'}) do |f| %>
     <div style="max-width: 95%" class="d-flex flex-column">
       <%= f.label :departure_airport_id, 'Departure Airport' %>
