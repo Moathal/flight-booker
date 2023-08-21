@@ -11,6 +11,11 @@
     </div>
 
     <div style="max-width: 95%" class="d-flex flex-column">
+      <%= f.label :required_seats, 'Seats Required' %>
+      <%= f.number_field :required_seats, value: 1 %>
+    </div>
+
+    <div style="max-width: 95%" class="d-flex flex-column">
       <%= f.label :start_time, 'Date' %>
       <%= f.date_field :start_time %>
     </div>

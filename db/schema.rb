@@ -27,7 +27,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_172743) do
     t.bigint "departure_airport_id", null: false
     t.bigint "arrival_airport_id", null: false
     t.string "duration"
-    t.date "start_time"
+    t.datetime "start_time"
+    t.integer "seats", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["arrival_airport_id"], name: "index_flights_on_arrival_airport_id"
@@ -56,7 +57,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_172743) do
   create_table "tickets", force: :cascade do |t|
     t.bigint "passenger_id", null: false
     t.bigint "flight_id", null: false
-    t.string "seat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_tickets_on_flight_id"
