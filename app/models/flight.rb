@@ -3,4 +3,6 @@ class Flight < ApplicationRecord
   belongs_to :arrival_airport, class_name: 'Airport', foreign_key: 'arrival_airport_id'
   has_many :passengers, through: :tickets, source: :passenger
   has_many :tickets
+
+  attribute :required_seats, :integer
 end
