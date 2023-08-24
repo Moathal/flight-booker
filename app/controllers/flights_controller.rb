@@ -1,4 +1,6 @@
 class FlightsController < ApplicationController
+  include FlightsConcern
+
   def index
     @airports = Airport.pluck(:name, :code, :city, :country, :id).map do |name, code, city, country, id|
       ["#{name}, #{code}, #{city}, #{country}", id]

@@ -1,4 +1,4 @@
-module PostsConcern
+module FlightsConcern
   extend ActiveSupport::Concern
 
   # def find_flights_value_when_depart_equal_arrive(start_time, required_seats)
