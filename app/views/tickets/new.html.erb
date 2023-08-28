@@ -1,0 +1,19 @@
+<h1>Register The Passangers</h1>
+
+<% @num_passenger.times do |num| %>
+  <div>
+    <%= form_with(model: @ticktet) do |f| %>
+      <%= f.hidden_field :flight_id %>
+        <div>
+        <%= f.label :Passenger_name, "Passenger(#{num + 1}) Full Name" %>
+        <%= f.text_field :Passenger_name %>
+      </div>
+      <div>
+        <%= f.label :Passenger_email,  "Passenger(#{num + 1}) Email" %>
+        <%= f.email_field :Passenger_email %>
+      </div>
+
+      <%= f.submit "Submit", disable_with: 'Submiting...' %>
+    <% end %>
+  </div>
+<% end %>

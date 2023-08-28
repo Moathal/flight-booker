@@ -1,9 +1,9 @@
-<div style="min-height: 85% !important; width: 55%; gap: 15px !important;" class="card">
+<div style="!important; width: 98%; gap: 15px !important;" class="card">
   <ul class="list-unstyled">
     <% if @flights %>
       <% @flights.each do |flight| %>
         <li class="card p-1 m-1 bg-light bg-gradient">
-          <%= link_to flights_path, class: "text-reset text-decoration-none" do %>
+          <%= link_to new_flight_ticket_path(flight_id: flight.id, required_seats: @required_seats), class: "text-reset text-decoration-none" do %>
             <h5>
             <small><strong>From </strong></small><%= flight.departure_airport.code %> Airport <small><strong> To </strong></small><%= flight.arrival_airport.code %> Airport
             </h5>

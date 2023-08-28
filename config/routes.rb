@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :tickets, only: [:index, :show, :new, :create]
   end
   # Defines the root path route ("/")
   root "flights#index"

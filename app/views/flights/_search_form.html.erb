@@ -1,23 +1,26 @@
-<div style="min-height: 100% !important; width: 40%; gap: 15px !important;" class="card d-flex flex-column justify-content-center">
-  <%= form_with(url: {controller: "flights", action: "index"}, method: :get, html: {style: 'max-width: 100%; ', class: 'd-flex flex-column align-items-start gap-3 m-1'}) do |f| %>
-    <div style="max-width: 95%" class="d-flex flex-column">
+<div style="width: 98% !important; gap: 15px !important;" class="card d-flex flex-column justify-content-center">
+  <%= form_with(url: {controller: "flights", action: "index"}, method: :get, html: {style: 'max-width: 100%; ', class: 'd-flex flex-column align-items-center gap-3 m-1'}) do |f| %>
+    <div style="width: 95%" class="d-flex flex-row flex-wrap justify-content-between align-items-between">
+    <div style="gap: 0.5em !important; margin: 0.5em !important;  max-width: 95%" class="d-flex flex-row align-self-start">
       <%= f.label :departure_airport_id, 'Departure Airport' %>
-      <%= f.select :departure_airport_id, @airports, {}, { style: 'max-width: 100% !important;' } %>
-    </div>
-
-    <div style="max-width: 95%", class="d-flex flex-column">
+      <%= f.select :departure_airport_id, @airports, {}, { style: 'max-width: 60% !important;' } %>
+      </div>
+      <div style="gap: 0.5em !important; margin: 0.5em !important; max-width: 95%" class="d-flex flex-row align-items-center align-self-end">
       <%= f.label :arrival_airport_id, 'Arrival Airport' %>
-      <%= f.select :arrival_airport_id, @airports, {}, { style: 'max-width: 100% !important;' } %>
+      <%= f.select :arrival_airport_id, @airports, {}, { style: 'max-width: 60% !important;' } %>
+      </div>
     </div>
 
-    <div style="max-width: 95%" class="d-flex flex-column">
-      <%= f.label :required_seats, 'Seats Required' %>
-      <%= f.number_field :required_seats, value: 1 %>
-    </div>
+    <div style="max-width: 100%" class="d-flex flex-row flex-wrap justify-content-between">
+      <div class="d-flex flex-column flex-wrap">
+        <%= f.label :start_time, 'Date' %>
+        <%= f.date_field :start_time %>
+      </div>
 
-    <div style="max-width: 95%" class="d-flex flex-column">
-      <%= f.label :start_time, 'Date' %>
-      <%= f.date_field :start_time %>
+      <div style="max-width: 35%" class="d-flex flex-column">
+        <%= f.label :required_seats, 'Seats Required' %>
+        <%= f.number_field :required_seats, value: 1 %>
+      </div>
     </div>
 
     <%= f.submit 'Search', style: 'width: 50%; align-self: center;' %>
