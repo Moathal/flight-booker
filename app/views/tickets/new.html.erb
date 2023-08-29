@@ -1,19 +1,22 @@
-<h1>Register The Passangers</h1>
+<div style="width: 98% !important; gap: 15px !important;" class="d-flex flex-column justify-content-center align-items-center">
+  <h1>Register The Passangers</h1>
 
-<% @num_passenger.times do |num| %>
-  <div>
-    <%= form_with(model: @ticktet) do |f| %>
-      <%= f.hidden_field :flight_id %>
-        <div>
-        <%= f.label :Passenger_name, "Passenger(#{num + 1}) Full Name" %>
-        <%= f.text_field :Passenger_name %>
-      </div>
-      <div>
-        <%= f.label :Passenger_email,  "Passenger(#{num + 1}) Email" %>
-        <%= f.email_field :Passenger_email %>
-      </div>
+  <% @num_passenger.times do |num| %>
+    <div style="width: 98% !important; gap: 15px !important;" class="card d-flex flex-column justify-content-center align-items-center">
+      <%= form_with(model: @ticktet, html: {style: 'max-width: 100%; ', class: 'd-flex align-items-center gap-3 m-1'}) do |f| %>
+        <h2>Passenger(<%= num + 1 %>) </h2>
+        <%= f.hidden_field :flight_id %>
+          <div style="gap: 0.5em !important; margin: 0.5em !important;  max-width: 95%" class="d-flex flex-row align-self-start">
+          <%= f.label :Passenger_name, "Full Name" %>
+          <%= f.text_field :Passenger_name %>
+        </div>
+        <div style="gap: 0.5em !important; margin: 0.5em !important;  max-width: 95%" class="d-flex flex-row align-self-start">
+          <%= f.label :Passenger_email,  "Email" %>
+          <%= f.email_field :Passenger_email, style: 'max-width: 60% !important;' %>
+        </div>
 
-      <%= f.submit "Submit", disable_with: 'Submiting...' %>
-    <% end %>
-  </div>
-<% end %>
+        <%= f.submit "Submit", style: 'max-width: 60% !important;', disable_with: 'Submiting...' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
