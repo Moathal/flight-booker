@@ -12,14 +12,7 @@ class Flight < ApplicationRecord
   end
 
   def add_flight_code
-    depart_airport_id = format_integer_with_fixed_digits(departure_airport.id, 4) 
-    arrive_airport_id = format_integer_with_fixed_digits(arrival_airport.id, 4) 
-    flight_id = format_integer_with_fixed_digits(id, 4) 
-    self.code = "#{depart_airport_id}#{departure_airport.code}-#{flight_id}#{arrive_airport_id}-#{arrival_airport.code}"
+    self.code = "#{departure_airport.id}#{arrival_airport.id}-#{departure_airport.code}-#{arrival_airport.code}-#{id}"
     self.save
-  end
-
-  def format_integer_with_fixed_digits(number, digits)
-    formatted_number = number.to_s.rjust(digits, '0')
   end
 end

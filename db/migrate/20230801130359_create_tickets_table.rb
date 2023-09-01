@@ -5,7 +5,7 @@ class CreateTicketsTable < ActiveRecord::Migration[7.0]
       t.text :passenger_email, null: false
       t.references :passenger, null: true, foreign_key: true
       t.references :flight, null: false, foreign_key: true
-      t.references :booker, null: false, foreign_key: { to_table: :passengers }
+      t.references :booker, null: true, foreign_key: { to_table: :passengers }
 
       t.timestamps
     end

@@ -1,6 +1,8 @@
 class TicketsController < ApplicationController
+  before_action :authenticate_passenger!
+
   def index
-    @tickets = Ticket.where(booking_id: current_user.id).or(Ticket.where(passenger_id: current_user.id))
+    @tickets = Ticket.where(booking_id: current_passenger.id).or(Ticket.where(passenger_id: current_passenger.id))
   end
 
   def new
@@ -10,23 +12,33 @@ class TicketsController < ApplicationController
   end
 
   def create
-    passanger = Passanger.find_by(id: ticket_params[:passanger_email])
-    if passanger.empty?
+    @ticket = ticket
+    if @ticket.save?
+      render @ticket
+    else
+      render @ticket.new
+    end
+  end
+
+  def ticket
+    passanger = Passenger.find_by(email: ticket_params[:passenger_email])
+    if passanger.nil?
+    @ticket = Ticket.new(ticket_params)
+    @ticket.passanger = nil
+    elsif passenger == current_passenger
       @ticket = Ticket.new(ticket_params)
-      @ticket.passanger = nil
-    elsif passanger == current_user
-      @ticket = Ticket.new(ticket_params)
-      @ticket.passanger = current_user
+      @ticket.passanger = current_passenger
     else
       @ticket = Ticket.new(ticket_params)
-      @ticket.passanger = passanger
+      @ticket.passanger = passenger
     end
-    @ticket.booker = current_user
+    @ticket.booker = current_passenger
   end
 
   private
 
   def ticket_params
-    params.require(:tickets).permit(:passenger_name, :passenger_email, :flight_id)
+    puts "<><><><><><><><><><><><><><><><><><><>#{params[:flight_id]}<><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><><>"
+    params.require(:ticket).permit(:passenger_name, :passenger_email, :flight_id)
   end
 end

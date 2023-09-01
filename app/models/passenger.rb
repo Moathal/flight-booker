@@ -3,5 +3,5 @@ class Passenger < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  has_many :tickets
+  has_many :tickets, inverse_of: :passengers
 end
