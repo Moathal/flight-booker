@@ -12,9 +12,7 @@
     <%= link_to "Tickets", tickets_path, class: "nav-link #{tickets_active}", role: "tab", "aria-controls" => "messages", "aria-selected" => "false" %>
   </li>
   <% if passenger_signed_in? %>
-    <li>
       <%= button_to "Logout", destroy_passenger_session_path, :method => :delete, class: "nav-link" %>
-    </li>
   <% end %>
 </ul>
 

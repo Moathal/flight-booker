@@ -60,7 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_01_172743) do
     t.text "passenger_email", null: false
     t.bigint "passenger_id"
     t.bigint "flight_id", null: false
-    t.bigint "booker_id", null: false
+    t.bigint "booker_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["booker_id"], name: "index_tickets_on_booker_id"
