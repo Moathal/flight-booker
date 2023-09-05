@@ -1,5 +1,19 @@
-<h1>Ticket#booking_rejected</h1>
+<h1>Ticket booking rejected</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/ticket_mailer/booking_rejected.html.erb
+  <strong><%= @greeting %>,</strong>
+</p><br>
+<p style="text-indent: 40px">
+  We regret to tell you that booked flight from <%= @ticket.flight.departure_airport.city %>, <%= @ticket.flight.departure_airport.country %> to <%= @ticket.flight.arrival_airport.city %>, <%= @ticket.flight.arrival_airport.country %> by <%= @ticket.flight.booker.fullname %> at  <%= @ticket.flight.start_time.strftime("%a, %d %b %Y") %>% and lasts for <% @ticket.flight.duration %> hours </strong>Is rejected by the Airlines</strong> due to the flight reaching its maximum capacity of passenger.  
 </p>
+<br>
+<br>
+
+<p> We erge you to visit our website <a href="FakeDomain/passengers/sign_in">odinflightbooker.com</a> to see book for another flight.</p>
+
+<br>
+<br>
+
+
+<p>Best Regards,</p><br>
+<p><strong>OdinFlightBooker Crew</strong></p>

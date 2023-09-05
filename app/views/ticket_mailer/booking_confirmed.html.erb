@@ -1,5 +1,17 @@
-<h1>Ticket#booking_confirmed</h1>
+<h1>Ticket booking confirmed</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/ticket_mailer/booking_confirmed.html.erb
+  <strong><%= @greeting %>, </strong>
+</p><br>
+<p style="text-indent: 40px">
+  You have successfully booked a flight from <%= @ticket.flight.departure_airport.city %>, <%= @ticket.flight.departure_airport.country %> to <%= @ticket.flight.arrival_airport.city %>, <%= @ticket.flight.arrival_airport.country %> by <%= @ticket.flight.booker.fullname %> at  <%= @ticket.flight.start_time.strftime("%a, %d %b %Y") %>% and lasts for <% @ticket.flight.duration %> hours.  
 </p>
+<br>
+<br>
+
+<p>Please login or sign up with this email <a href="FakeDomain/passengers/sign_in">odinflightbooker.com</a> to see your ticket.</p>
+
+<br>
+<br>
+<p>Best Regards,</p><br>
+<p><strong>OdinFlightBooker Crew</strong></p>
