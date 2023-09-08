@@ -6,7 +6,7 @@ class TicketMailer < ApplicationMailer
   #   en.ticket_mailer.booking_confirmed.subject
   #
   def booking_confirmed(ticket)
-    @greeting = "Hello Mr. #{last_name(ticket.fullname)}"
+    @greeting = "Hello Miss/Mr. #{last_name(ticket.fullname)}"
     @ticket = ticket
     mail(to: @ticket.email, subject: 'Booking Confirmed')
   end
@@ -17,9 +17,16 @@ class TicketMailer < ApplicationMailer
   #   en.ticket_mailer.booking_rejected.subject
   #
   def booking_rejected(ticket)
-    @greeting = "Hello Mr. #{last_name(ticket.fullname)}"
+    @greeting = "Hello Miss/Mr. #{last_name(ticket.fullname)}"
     @ticket = ticket
     mail(to: @ticket.email, subject: 'Booking Rejected')
+  end
+  
+  def booker_mailer(ticket, status)
+    @greeting = "Hello Miss/Mr. #{last_name(ticket.fullname)}"
+    @ticket = ticket
+    @status = status
+    mail(to: @ticket.email, subject: 'Update on the flights you are booking')
   end
 
   def lastname(name)

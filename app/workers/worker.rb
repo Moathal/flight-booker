@@ -12,6 +12,7 @@ class TicketWorker
   include sidkiq::Worker
 
   def perform(status, ticket)
+    TicketMailer.booker_mailer(ticket, status)
     case status
     when 'confirmed'
       sleep rand(0..20)

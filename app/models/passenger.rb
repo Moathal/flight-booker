@@ -10,7 +10,7 @@ class Passenger < ApplicationRecord
   private
 
   def connect_passanger_to_ticket
-    tickets = Ticket.where(email: self.email)
+    tickets = Ticket.where(passenger_email: self.email)
     if !tickets.empty?
       tickets.each do |ticket|
         ticket.update(passenger_id: self.id)
