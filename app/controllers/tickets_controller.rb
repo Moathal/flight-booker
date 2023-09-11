@@ -19,25 +19,28 @@ class TicketsController < ApplicationController
   def create
     @ticket = ticket
     if @ticket.save!
-      render :index
+      redirect_to :tickets
     else
       render :new
     end
   end
 
   def ticket
-    passanger = Passenger.find_by(email: ticket_params[:passenger_email])
-    if passanger.nil?
+    passenger = Passenger.find_by(email: ticket_params[:passenger_email].downcase.strip)
+    puts "<><>}{}{><><><><}P}P}P}P}P}P}P}P} #{ticket_params[:passenger_email]} <><><><><><><><}{}{}{}{}{}{}{}{P{P{P{P{P}}}}}"
+    puts "<><>}{}{><><><><}P}P}P}P}P}P}P}P} #{Passenger.find_by(email: ticket_params[:passenger_email])} <><><><><><><><}{}{}{}{}{}{}{}{P{P{P{P{P}}}}}"
+    if passenger.nil?
     @ticket = Ticket.new(ticket_params)
     @ticket.passenger = nil
     elsif passenger == current_passenger
       @ticket = Ticket.new(ticket_params)
-      @ticket.passanger = current_passenger
+      @ticket.passenger = current_passenger
     else
       @ticket = Ticket.new(ticket_params)
-      @ticket.passanger = passenger
+      @ticket.passenger = passenger
     end
     @ticket.booker = current_passenger
+    @ticket
   end
 
   private

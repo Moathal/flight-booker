@@ -2,10 +2,22 @@
   <ul style="!important; width: 98%;" class="list-unstyled card d-flex flex-column align-items-center p-1 m-1">
     <% if @tickets %>
       <% @tickets.each do |ticket| %>
-        <li class="card p-1 m-1 bg-light bg-gradient">
-            <h5>
-            <small><strong>From </strong></small><%= ticket.flight.departure_airport.code %> Airport <small><strong> To </strong></small><%= ticket.flight.arrival_airport.code %> Airport
-            </h5>
+        <li style="width: 95%" class="card p-1 m-1 bg-light bg-gradient">
+            <div class="d-flex justify-content-between">
+              <h5>
+                <small><strong>From </strong></small><%= ticket.flight.departure_airport.code %> Airport <small><strong> To </strong></small><%= ticket.flight.arrival_airport.code %> Airport
+              </h5>
+              <span>
+                You are 
+                  <% if ticket.booker_id == current_passenger.id && ticket.passenger_id == current_passenger.id %>
+                    <strong>The Booker</strong> and <strong>The Passenger</strong>
+                  <% elsif ticket.booker_id == current_passenger.id %>
+                    <strong>The Booker</strong>
+                  <% else %>
+                    <strong>The Passenger</strong>
+                  <% end %></p>
+              </span>
+            </div>
             <p>
               <small><strong>Flies from </strong></small><%= ticket.flight.departure_airport.city.upcase %>, <%= ticket.flight.departure_airport.country.upcase %><small><strong> Land's in </strong></small><%= ticket.flight.arrival_airport.city.upcase %>, <%= ticket.flight.arrival_airport.country.upcase %>
             </p>
