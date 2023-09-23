@@ -3,9 +3,7 @@
   <div style="width: 98% !important; gap: 8px !important;" class="card d-flex flex-column justify-content-center">
     <%= render 'search_form' %>
   </div>
-  <%= turbo_frame_tag "after_form" do %>
-  <div style="!important; width: 98%; gap: 15px !important;" class="card">  
+  <%= turbo_frame_tag "after_form", style: "!important; width: 98%; gap: 15px !important", class: "card"  do %>
     <%= render @flights %>
-  </div>
   <% end %>
 </div>

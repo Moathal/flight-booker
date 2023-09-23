@@ -1,5 +1,4 @@
-  <ul class="list-unstyled">
-    <%# <%= turbo_frame_tag "after_form" do %> %>
+<ul  class="list-unstyled">
       <% if @flights %>
         <% @flights.each do |flight| %>
           <%= render @flight %>
@@ -7,5 +6,6 @@
       <% else %>
         <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
       <% end %>
-    <%# <% end %> %>
   </ul>
+</div>
+
