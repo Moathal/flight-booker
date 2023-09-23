@@ -1,6 +1,11 @@
 <h1 style="margin-left: 1% !important; max-width: 99%">FIND A FLIGHT</h1>
 <div style="min-height: 65%;" class="d-flex flex-column gap-1 justify-content-center align-items-center">
-  <%= render 'search_form' %>
-
-  <%= render partial: 'flights/flights' %>
+  <div style="width: 98% !important; gap: 8px !important;" class="card d-flex flex-column justify-content-center">
+    <%= render 'search_form' %>
+  </div>
+  <%= turbo_frame_tag "after_form" do %>
+  <div style="!important; width: 98%; gap: 15px !important;" class="card">  
+    <%= render @flights %>
+  </div>
+  <% end %>
 </div>

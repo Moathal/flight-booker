@@ -1,24 +1,11 @@
-<div style="!important; width: 98%; gap: 15px !important;" class="card">
   <ul class="list-unstyled">
-    <% if @flights %>
-      <% @flights.each do |flight| %>
-        <li class="card p-1 m-1 bg-light bg-gradient">
-          <%= link_to new_flight_ticket_path(flight_id: flight.id, required_seats: @required_seats), class: "text-reset text-decoration-none" do %>
-            <h5>
-            <small><strong>From </strong></small><%= flight.departure_airport.code %> Airport <small><strong> To </strong></small><%= flight.arrival_airport.code %> Airport
-            </h5>
-            <p>
-              <small><strong>Flies from </strong></small><%= flight.departure_airport.city.upcase %>, <%= flight.departure_airport.country.upcase %><small><strong> Land's in </strong></small><%= flight.arrival_airport.city.upcase %>, <%= flight.arrival_airport.country.upcase %>
-            </p>
-              <div class="d-flex justify-content-end">
-                <p class="text-reset text-decoration-none"><strong>Flies in: </strong><small><%= flight.start_time.strftime("%a, %d %b %Y") %> </small></p>
-                <p class="text-reset text-decoration-none mx-1"><strong> Duration: </strong><small><%= flight.duration %> Hrs </small></p>
-              </div>
-          <% end %>
-        </li>
+    <%# <%= turbo_frame_tag "after_form" do %> %>
+      <% if @flights %>
+        <% @flights.each do |flight| %>
+          <%= render @flight %>
         <% end %>
-    <% else %>
-      <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
-    <% end %>
+      <% else %>
+        <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
+      <% end %>
+    <%# <% end %> %>
   </ul>
-</div>

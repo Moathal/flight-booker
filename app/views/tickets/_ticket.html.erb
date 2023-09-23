@@ -1,9 +1,24 @@
-<div>
-  <div class="d-flex flex-column align-items-center">
-  <p><strong>Passenger name: </strong> <%= @ticket.passanger_name %></p>
-  <p><strong>Passenger email: </strong> <%= @ticket.passanger_email %></p>
-  <small><strong>Flight number:</strong> <%= @ticket.flight.code %></small>
-  </div>
-    <div class="justify-self-end align-self-end">
-  </div>
-</div>
+<li style="width: 95%" class="card p-1 m-1 bg-light bg-gradient">
+    <div class="d-flex justify-content-between">
+      <h5>
+        <small><strong>From </strong></small><%= ticket.flight.departure_airport.code %> Airport <small><strong> To </strong></small><%= ticket.flight.arrival_airport.code %> Airport
+      </h5>
+      <span>
+        You are 
+          <% if ticket.booker_id == current_passenger.id && ticket.passenger_id == current_passenger.id %>
+            <strong>The Booker</strong> and <strong>The Passenger</strong>
+          <% elsif ticket.booker_id == current_passenger.id %>
+            <strong>The Booker</strong>
+          <% else %>
+            <strong>The Passenger</strong>
+          <% end %></p>
+      </span>
+    </div>
+    <p>
+      <small><strong>Flies from </strong></small><%= ticket.flight.departure_airport.city.upcase %>, <%= ticket.flight.departure_airport.country.upcase %><small><strong> Land's in </strong></small><%= ticket.flight.arrival_airport.city.upcase %>, <%= ticket.flight.arrival_airport.country.upcase %>
+    </p>
+      <div class="d-flex justify-content-end">
+        <p class="text-reset text-decoration-none"><strong>Flies in: </strong><small><%= ticket.flight.start_time.strftime("%a, %d %b %Y") %> </small></p>
+        <p class="text-reset text-decoration-none mx-1"><strong> Duration: </strong><small><%= ticket.flight.duration %> Hrs </small></p>
+      </div>
+</li>
