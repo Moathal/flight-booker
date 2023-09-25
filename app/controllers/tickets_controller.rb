@@ -13,10 +13,10 @@ class TicketsController < ApplicationController
 
   def create
     @ticket = ticket
-    if @ticket.save!
-      redirect_to :tickets
+    if @ticket.save
+      redirect_to tickets_path, notice: "Ticket is successfully booked!"
     else
-      render :new
+      redirect_to root_url, alert: "Not possible due to #{@ticket.errors.full_messages[0]}"
     end
   end
 

@@ -7,9 +7,8 @@
         <small><strong>Flies from </strong></small><%= flight.departure_airport.city.upcase %>, <%= flight.departure_airport.country.upcase %><small><strong> Land's in </strong></small><%= flight.arrival_airport.city.upcase %>, <%= flight.arrival_airport.country.upcase %>
       </p>
         <div class="d-flex justify-content-end">
-          <p class="text-reset text-decoration-none"><strong>Flies in: </strong><small><%= flight.start_time.strftime("%a, %d %b %Y") %> </small></p>
+          <p class="text-reset text-decoration-none"><strong>Flies in: </strong><small><%= flight.start_time.strftime("%a, %H:%M, %d %b %Y") %> </small></p>
           <p class="text-reset text-decoration-none mx-1"><strong> Duration: </strong><small><%= flight.duration %> Hrs </small></p>
         </div>
     <% end %>
   </li>
-  

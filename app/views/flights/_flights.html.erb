@@ -1,11 +1,9 @@
 <ul  class="list-unstyled">
       <% if @flights %>
         <% @flights.each do |flight| %>
-          <%= render @flight %>
+          <%= render @flight, flight: flight %>
         <% end %>
       <% else %>
         <h5>NO FLIGHTS FOUND FOR THE GIVEN PARAMETERS!!!<h5>
       <% end %>
   </ul>
-</div>
-

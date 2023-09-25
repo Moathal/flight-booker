@@ -37,7 +37,7 @@ airports.each do |departure|
       Flight.create!(
         departure_airport_id: departure.id,
         arrival_airport_id: arrival.id,
-        duration: "#{rand(1..10)}:#{rand(0..59).to_s.rjust(2, '0')}",
+        duration: "#{rand(1..4)}:#{rand(0..59).to_s.rjust(2, '0')}",
         start_time: (DateTime.now + i.days).change(hour: rand(0..23), min: rand(0..59)),
         seats: rand(0..255)
       )

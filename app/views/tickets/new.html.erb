@@ -1,22 +1,21 @@
-<div style="width: 98% !important; gap: 15px !important;" class="d-flex flex-column justify-content-center align-items-center">
-  <h1>Register The Passengers</h1>
-
-  <% @num_passenger.times do |num| %>
-    <div style="width: 98% !important; gap: 15px !important;" class="card d-flex flex-column justify-content-center align-items-center">
-      <%= form_with(model: [@flight, @ticket], html: {style: 'width: 97%; ', class: 'd-flex align-items-center justify-content-between m-1 p-1'}) do |f| %>
-        <h2 class="justify-self-start"><%= num + 1 %>) </h2>
-        <%= f.hidden_field :flight_id, value: @flight.id %>
+  <div style="width: 98% !important; gap: 15px !important;" class="d-flex flex-column justify-content-center align-items-center">
+    <h1>Register The Passengers</h1>
+    <% @num_passenger.times do |num| %>
+      <div style="width: 98% !important; gap: 15px !important;" class="card d-flex flex-column justify-content-center align-items-center">
+        <%= form_with(model: [@flight, @ticket], html: {style: 'width: 97%; ', class: 'd-flex align-items-center justify-content-between m-1 p-1'}) do |f| %>
+          <h2 class="justify-self-start"><%= num + 1 %>) </h2>
+          <%= f.hidden_field :flight_id, value: @flight.id %>
+            <div style="gap: 0.5em !important; margin: 0.5em !important;  max-width: 95%" class="d-flex flex-row align-self-start">
+            <%= f.label :passenger_name, "Full Name" %>
+            <%= f.text_field :passenger_name %>
+          </div>
           <div style="gap: 0.5em !important; margin: 0.5em !important;  max-width: 95%" class="d-flex flex-row align-self-start">
-          <%= f.label :passenger_name, "Full Name" %>
-          <%= f.text_field :passenger_name %>
-        </div>
-        <div style="gap: 0.5em !important; margin: 0.5em !important;  max-width: 95%" class="d-flex flex-row align-self-start">
-          <%= f.label :passenger_email,  "Email" %>
-          <%= f.email_field :passenger_email, style: 'max-width: 60% !important;' %>
-        </div>
+            <%= f.label :passenger_email,  "Email" %>
+            <%= f.email_field :passenger_email, style: 'max-width: 60% !important;' %>
+          </div>
 
-        <%= f.submit "Submit", style: 'max-width: 60% !important;', disable_with: 'Submiting...', class:"button text-primary bg-light rounded border-1" %>
-      <% end %>
-    </div>
-  <% end %>
-</div>
+          <%= f.submit "Submit", style: 'max-width: 60% !important;', disable_with: 'Submiting...', class:"button text-primary bg-light rounded border-1" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>

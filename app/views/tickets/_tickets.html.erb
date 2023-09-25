@@ -1,3 +1,4 @@
+<%= turbo_frame_tag "after_form", style: "!important; width: 98%; gap: 15px !important", class: "card"  do %>
 <ul style="!important; width: 98%;" class="list-unstyled card d-flex flex-column align-items-center p-1 m-1">
     <% if tickets %>
       <% tickets.each do |ticket| %>
@@ -9,3 +10,4 @@
       <li>
     <% end %>
   </ul>
+  <% end %>
