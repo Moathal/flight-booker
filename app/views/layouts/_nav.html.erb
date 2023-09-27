@@ -1,0 +1,20 @@
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <%= link_to "Home", root_path, class: "nav-link #{flights_active}", role: "tab", "aria-controls" => "home", "aria-selected" => "false" %>
+  </li>
+  <% if !passenger_signed_in? %>
+    <li class="nav-item" role="presentation">
+      <%= button_to "Login", new_passenger_session_path, :method => :get, class: "nav-link #{login_active}", role: "tab", "aria-controls" => "profile", "aria-selected" => "true" %>
+    </li>
+  <% end %>
+  <li class="nav-item" role="presentation">
+    <%= link_to "Tickets", tickets_path, class: "nav-link #{tickets_active}", role: "tab", "aria-controls" => "messages", "aria-selected" => "false" %>
+  </li>
+  <% if passenger_signed_in? %>
+      <%= button_to "Logout", destroy_passenger_session_path, :method => :delete, class: "nav-link" %>
+  <% end %>
+</ul>
+
+
+

@@ -1,0 +1,13 @@
+<%= turbo_frame_tag "after_form", style: "!important; width: 98%; gap: 15px !important", class: "card"  do %>
+<ul style="!important; width: 98%;" class="list-unstyled card d-flex flex-column align-items-center p-1 m-1">
+    <% if tickets %>
+      <% tickets.each do |ticket| %>
+        <%= render @ticket, ticket: ticket %>
+        <% end %>
+    <% else %>
+      <li class="p-2 m-2">
+        <h5 >You have not booked any ticket!!!<h5>
+      <li>
+    <% end %>
+  </ul>
+  <% end %>

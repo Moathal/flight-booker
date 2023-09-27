@@ -1,0 +1,11 @@
+<%# turbo_frame_tag "reserve_ticket" do %>
+  <h1 style="margin-left: 1% !important; max-width: 99%">FIND A FLIGHT</h1>
+<div style="min-height: 65%;" class="d-flex flex-column gap-1 justify-content-center align-items-center">
+  <div style="width: 98% !important; gap: 8px !important;" class="card d-flex flex-column justify-content-center">
+    <%= render 'search_form' %>
+  </div>
+  
+    <%= render @flights %>
+  <%# end %>
+</div>
+<%# end %>

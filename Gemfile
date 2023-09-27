@@ -59,12 +59,12 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
+  gem "letter_opener"
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
+  gem "spring"
 end
 
 group :test do
@@ -73,3 +73,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+# A background processing gem to handle asynchronouns requests using redis [https://github.com/sidekiq/sidekiq]
+gem "sidekiq"  
+
+# A gem to handle authentication, log in, and sign up [https://github.com/jinzhu/devise]
+gem "devise", "~> 4.9"
