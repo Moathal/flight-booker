@@ -14,7 +14,10 @@ class TicketsController < ApplicationController
   def create
     @ticket = ticket
     if @ticket.save
-      redirect_to tickets_path, notice: "Ticket is successfully booked!"
+      status = rand(1..100) < 0.75 ? 'confirmed' : 'rejected'
+      Rails.cache.write("ticket_#{ticket.id}_status", 'pending')
+      TicketWorker.perform_async(status, @ticket.id)
+      redirect_to tickets_path, notice: "Ticket is successfully saved waiting to be confirmed from the airlines!"
     else
       redirect_to root_url, alert: "Not possible due to #{@ticket.errors.full_messages[0]}"
     end

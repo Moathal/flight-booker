@@ -26,7 +26,7 @@ class TicketMailer < ApplicationMailer
     @greeting = "Hello Miss/Mr. #{last_name(ticket.fullname)}"
     @ticket = ticket
     @status = status
-    mail(to: @ticket.email, subject: 'Update on the flights you are booking')
+    mail(to: @ticket.email, subject: 'Update on the your flight booking')
   end
 
   def lastname(name)
